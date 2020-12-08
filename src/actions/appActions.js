@@ -21,7 +21,7 @@ export const editNote = ({title, note, id})=>({
     }
 })
 
-export const deleteNote = ({id})=>({
+export const deleteNote = (id)=>({
     type:DELETE,
     payload:{
         id,

@@ -11,8 +11,13 @@ const InputWrapper = styled.div``
 const Label = styled.label``
 const Input = styled.input``
 const SubmitButton = styled.button``
+const ErrorMessage = styled.p`
+color:red;
+`
 
 const Form = ({ title = '', note = '', id, toogleVisible, addNote, editNote, }) => {
+
+    const [ErrorMessageVisible, setIsErrorMessageVisible] = useState(false)
 
     const [titleInput, setTitleInput] = useState(title)
     const [noteInput, setNoteInput] = useState(note)
@@ -24,9 +29,11 @@ const Form = ({ title = '', note = '', id, toogleVisible, addNote, editNote, }) 
         e.preventDefault();
 
         if (titleInput === "" || noteInput === "") {
-            console.log("błąd")
+            setIsErrorMessageVisible(true)
         } else {
-
+            setIsErrorMessageVisible(false)
+            setTitleInput("")
+            setNoteInput("")
             const noteObject = {
                 title: titleInput,
                 note: noteInput,
@@ -64,8 +71,9 @@ const Form = ({ title = '', note = '', id, toogleVisible, addNote, editNote, }) 
                 </Label>
             </InputWrapper>
             <SubmitButton type="submit">
-                { id ? "EDIT NOTE" : "ADD NOTE" }
+                { id ? "SAVE" : "ADD NOTE" }
             </SubmitButton>
+            { ErrorMessageVisible ? <ErrorMessage>Please enter title and some note.</ErrorMessage> : null }
         </FormWrapper>
     )
 }
