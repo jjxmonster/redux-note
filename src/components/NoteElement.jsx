@@ -13,7 +13,7 @@ grid-column:2/5;
 grid-row:2/4;
 display:flex;
 flex-direction:column;
-
+padding-left:30px;
 `
 const Title = styled.h2`
 flex:1;

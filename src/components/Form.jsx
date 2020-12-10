@@ -11,6 +11,7 @@ grid-column:2/5;
 grid-row:2/4;
 display:flex;
 flex-direction:column;
+padding-left:30px;
 `
 const FormH1 = styled.h1`
 flex:1;
@@ -23,6 +24,7 @@ const FormWrapper = styled.form`
 flex:8;
 display:flex;
 flex-direction:column;
+
 `
 const InputWrapper = styled.div`
 flex:1;
@@ -147,7 +149,7 @@ const Form = ({ title = '', note = '', id, toogleVisible, }) => {
             <FormH1> { id ? "edit note" : "new note" }</FormH1>
             <FormWrapper onSubmit={ handleSubmit }>
                 <InputWrapper>
-                    <LabelForInput htmlFor="title" >some title</LabelForInput>
+                    <LabelForInput htmlFor="title" >{ id ? "edit title" : "enter title" }</LabelForInput>
                     <Input
                         id="title"
                         type="text"
@@ -156,7 +158,7 @@ const Form = ({ title = '', note = '', id, toogleVisible, }) => {
                     />
                 </InputWrapper>
                 <TextAreaWrapper>
-                    <LabelForArea htmlFor="userNote">some note</LabelForArea>
+                    <LabelForArea htmlFor="userNote">{ id ? "edit note" : "enter note" }</LabelForArea>
                     <TextArea
                         id="userNote"
                         onChange={ handleNoteChange }

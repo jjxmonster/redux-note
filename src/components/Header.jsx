@@ -3,7 +3,7 @@ import { theme } from '../themes/theme'
 
 
 const HeaderWrapper = styled.div`
-grid-column:1/5;
+// grid-column:1/5;
 `
 const Title = styled.h1`
 color:${theme.colors.grey};
@@ -13,7 +13,7 @@ color:${theme.colors.grey};
 const Header = () => {
     return (
         <HeaderWrapper>
-            <Title>note</Title>
+            <Title></Title>
         </HeaderWrapper>
 
     );

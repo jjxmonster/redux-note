@@ -26,9 +26,11 @@ const App = () => {
   const [visibleNote, setVisibleNote] = useState()
 
 
-  const getNoteId = (id) => {
+  const setNoteId = (id) => {
     setVisibleNote(id)
   }
+
+
 
   return (
     <Provider store={ store }>
@@ -36,7 +38,7 @@ const App = () => {
       <Container>
         <Header />
         <NoteWrapper visibleNote={ visibleNote } />
-        <NoteList getNoteId={ getNoteId } />
+        <NoteList setNoteId={ setNoteId } />
       </Container >
     </Provider >
   );
