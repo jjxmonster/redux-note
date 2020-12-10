@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Form from './Form'
 import NoteElement from './NoteElement'
 
 
-const NoteWrapper = ({ notes, visibleNote = "" }) => {
-
+const NoteWrapper = ({ visibleNote = "" }) => {
+    const notes = useSelector(store => store.notes)
     const [isNoteVisible, setIsNoteVisible] = useState(false)
     const [visibleNoteId, setVisibleNoteId] = useState(visibleNote)
 
@@ -34,10 +34,4 @@ const NoteWrapper = ({ notes, visibleNote = "" }) => {
 }
 
 
-const reduxStateToProps = state => ({
-    notes: state.notes
-})
-
-const NoteWrapperConsumer = connect(reduxStateToProps)(NoteWrapper)
-
-export default NoteWrapperConsumer
+export default NoteWrapper

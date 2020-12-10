@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbtack, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
@@ -49,8 +49,9 @@ margin-bottom:50px;
 `
 
 
-const NoteList = ({ notes, setNoteId }) => {
+const NoteList = ({ setNoteId }) => {
 
+    const notes = useSelector(store => store.notes)
     const handleOnClick = (note) => { note ? setNoteId(note.id) : setNoteId(0) }
 
     const noteElements = notes.map(note => (
@@ -74,10 +75,6 @@ const NoteList = ({ notes, setNoteId }) => {
     );
 }
 
-const reduxStateToProps = state => ({
-    notes: state.notes
-})
 
-const noteListConsumer = connect(reduxStateToProps)(NoteList)
 
-export default noteListConsumer
+export default NoteList
